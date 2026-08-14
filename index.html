@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bağış Yarışması — Sıralama & Bilgilendirme</title>
+    <meta name="description" content="Bağış yarışması canlı sıralama tablosu, kurallar ve bilgilendirme sayfası.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <span class="logo-icon">♥</span>
+                <span class="logo-text">Bağış Yarışması</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero" class="nav-link active">Ana Sayfa</a></li>
+                <li><a href="#summary" class="nav-link">Özet</a></li>
+                <li><a href="#chart" class="nav-link">Grafik</a></li>
+                <li><a href="#leaderboard" class="nav-link">Sıralama</a></li>
+                <li><a href="#rules" class="nav-link">Kurallar</a></li>
+                <li><a href="#about" class="nav-link">Hakkımızda</a></li>
+                <li><a href="#faq" class="nav-link">SSS</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Menüyü aç">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="hero">
+        <div class="hero-bg-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        <div class="hero-container">
+            <div class="hero-badge">🏆 Yarışma Aktif</div>
+            <h1 class="hero-title">
+                Bağışınla <span class="highlight">Fark</span> Yarat
+            </h1>
+            <p class="hero-subtitle">
+                Her bağış bir hayata dokunuyor. Sıralamadaki yerini al, topluma katkıda bulun ve değişimin parçası ol.
+            </p>
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <span class="stat-number" id="totalDonors">0</span>
+                    <span class="stat-label">Katılımcı</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-card">
+                    <span class="stat-number" id="totalCost">0 ₺</span>
+                    <span class="stat-label">Toplam Maliyet</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-card">
+                    <span class="stat-number" id="totalDonation">0 ₺</span>
+                    <span class="stat-label">Toplam Bağış</span>
+                </div>
+            </div>
+            <a href="#leaderboard" class="hero-cta">
+                Sıralamayı Gör
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- SUMMARY CARDS SECTION -->
+    <section class="section summary-section" id="summary">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Genel Durum</span>
+                <h2 class="section-title">Finansal Özet</h2>
+            </div>
+            <div class="summary-grid" id="summaryGrid">
+                <div class="summary-card">
+                    <h3 class="summary-title">Toplam Maliyet</h3>
+                    <div class="summary-amount cost-text" id="summaryCost">0 ₺</div>
+                </div>
+                <div class="summary-card">
+                    <h3 class="summary-title">Toplam Bağış</h3>
+                    <div class="summary-amount donation-text" id="summaryDonation">0 ₺</div>
+                </div>
+                <div class="summary-card">
+                    <h3 class="summary-title">Toplam Kâr/Fark</h3>
+                    <div class="summary-amount profit-text" id="summaryProfit">0 ₺</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BAR CHART SECTION -->
+    <section class="section chart-section" id="chart">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">İstatistikler</span>
+                <h2 class="section-title">Bağış & Maliyet Dağılımı</h2>
+                <p class="section-desc">Katılımcıların bağış ve maliyet oranlarının görsel dağılımı.</p>
+            </div>
+            
+            <div class="chart-legend">
+                <div class="legend-item"><span class="color-box donation"></span>Bağış</div>
+                <div class="legend-item"><span class="color-box cost"></span>Maliyet</div>
+            </div>
+
+            <div class="chart-container" id="barChartContainer">
+                <!-- JS ile doldurulacak -->
+            </div>
+        </div>
+    </section>
+
+    <!-- LEADERBOARD SECTION -->
+    <section class="section leaderboard-section" id="leaderboard">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Canlı Sıralama</span>
+                <h2 class="section-title">🏆 Kazananlar</h2>
+                <p class="section-desc">En yüksek bağış yapan katılımcılarımız burada listelenmektedir.</p>
+            </div>
+
+            <!-- TOP 4 PODIUM -->
+            <div class="podium">
+                <div class="podium-card podium-2" id="podium-2">
+                    <div class="podium-rank">2</div>
+                    <div class="podium-avatar">🥈</div>
+                    <h3 class="podium-name">—</h3>
+                    <div class="podium-detail donation">Bağış: <span>— ₺</span></div>
+                    <div class="podium-detail cost">Maliyet: <span>— ₺</span></div>
+                    <div class="podium-detail profit">Fark: <span>— ₺</span></div>
+                </div>
+                <div class="podium-card podium-1" id="podium-1">
+                    <div class="podium-crown">👑</div>
+                    <div class="podium-rank">1</div>
+                    <div class="podium-avatar">🥇</div>
+                    <h3 class="podium-name">—</h3>
+                    <div class="podium-detail donation">Bağış: <span>— ₺</span></div>
+                    <div class="podium-detail cost">Maliyet: <span>— ₺</span></div>
+                    <div class="podium-detail profit">Fark: <span>— ₺</span></div>
+                </div>
+                <div class="podium-card podium-3" id="podium-3">
+                    <div class="podium-rank">3</div>
+                    <div class="podium-avatar">🥉</div>
+                    <h3 class="podium-name">—</h3>
+                    <div class="podium-detail donation">Bağış: <span>— ₺</span></div>
+                    <div class="podium-detail cost">Maliyet: <span>— ₺</span></div>
+                    <div class="podium-detail profit">Fark: <span>— ₺</span></div>
+                </div>
+                <div class="podium-card podium-4" id="podium-4">
+                    <div class="podium-rank">4</div>
+                    <div class="podium-avatar">🏅</div>
+                    <h3 class="podium-name">—</h3>
+                    <div class="podium-detail donation">Bağış: <span>— ₺</span></div>
+                    <div class="podium-detail cost">Maliyet: <span>— ₺</span></div>
+                    <div class="podium-detail profit">Fark: <span>— ₺</span></div>
+                </div>
+            </div>
+
+            <!-- FULL TABLE -->
+            <div class="table-wrapper">
+                <table class="leaderboard-table" id="leaderboardTable">
+                    <thead>
+                        <tr>
+                            <th class="th-rank">Sıra</th>
+                            <th class="th-name">İsim</th>
+                            <th class="th-amount">Maliyet</th>
+                            <th class="th-amount">Bağış Miktarı</th>
+                            <th class="th-amount">Fark</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leaderboardBody">
+                        <!-- JS ile doldurulacak -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- RULES SECTION -->
+    <section class="section rules-section" id="rules">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Bilgilendirme</span>
+                <h2 class="section-title">Yarışma Kuralları</h2>
+                <p class="section-desc">Yarışmaya katılmadan önce lütfen kuralları dikkatlice okuyunuz.</p>
+            </div>
+            <div class="rules-grid" id="rulesGrid">
+                <div class="rule-card">
+                    <div class="rule-icon">📋</div>
+                    <h3 class="rule-title">Katılım Koşulları</h3>
+                    <p class="rule-desc">Yarışma kuralları yakında burada paylaşılacaktır. Lütfen güncellemeleri takip ediniz.</p>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-icon">📅</div>
+                    <h3 class="rule-title">Yarışma Tarihleri</h3>
+                    <p class="rule-desc">Başlangıç ve bitiş tarihleri yakında duyurulacaktır.</p>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-icon">🏆</div>
+                    <h3 class="rule-title">Ödüller</h3>
+                    <p class="rule-desc">Ödül detayları yakında burada ilan edilecektir.</p>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-icon">⚖️</div>
+                    <h3 class="rule-title">Değerlendirme</h3>
+                    <p class="rule-desc">Bağışlar nasıl değerlendirilir? Detaylar yakında paylaşılacaktır.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="section about-section" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Biz Kimiz</span>
+                <h2 class="section-title">Hakkımızda</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        Bu yarışma, toplumsal dayanışmayı teşvik etmek ve ihtiyaç sahiplerine ulaşmak amacıyla düzenlenmiştir. 
+                        Amacımız, bağışçılarımızı bir araya getirerek topluma olan katkıyı artırmak ve her bir bağışın 
+                        gerçek bir fark yarattığını göstermektir.
+                    </p>
+                    <p>
+                        Şeffaflık, güvenilirlik ve toplumsal sorumluluk ilkeleri çerçevesinde hareket ediyoruz. 
+                        Her bağış kayıt altına alınmakta ve sıralama anlık olarak güncellenmektedir.
+                    </p>
+                </div>
+                <div class="about-values">
+                    <div class="value-item">
+                        <div class="value-icon">🤝</div>
+                        <div>
+                            <h4>Dayanışma</h4>
+                            <p>Birlikte daha güçlüyüz</p>
+                        </div>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon">🔍</div>
+                        <div>
+                            <h4>Şeffaflık</h4>
+                            <p>Her bağış kayıt altında</p>
+                        </div>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon">💚</div>
+                        <div>
+                            <h4>Güvenilirlik</h4>
+                            <p>Denetlenebilir süreçler</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="section faq-section" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Sorularınız</span>
+                <h2 class="section-title">Sıkça Sorulan Sorular</h2>
+            </div>
+            <div class="faq-list" id="faqList">
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Yarışmaya nasıl katılabilirim?</span>
+                        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Katılım detayları yakında burada paylaşılacaktır.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Sıralama nasıl belirleniyor?</span>
+                        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Sıralama, toplam bağış miktarına göre en yüksekten en düşüğe doğru belirlenmektedir.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Bağışlar güvenli mi?</span>
+                        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Evet, tüm bağışlar kayıt altına alınmakta ve şeffaf bir şekilde raporlanmaktadır.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Yarışma ne zaman sona erecek?</span>
+                        <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Bitiş tarihi yakında duyurulacaktır. Lütfen güncellemeleri takip ediniz.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">♥</span>
+                    <span class="logo-text">Bağış Yarışması</span>
+                </div>
+                <p class="footer-copy">© 2026 Bağış Yarışması. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
