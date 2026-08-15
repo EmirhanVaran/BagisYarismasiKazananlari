@@ -203,15 +203,11 @@ function populateTable() {
             ? `<span class="rank-badge ${rankClass}">${rank}</span>`
             : rank;
 
-        const profit = p.donation - p.cost;
-        const profitClass = profit >= 0 ? "positive" : "negative";
-
         tr.innerHTML = `
             <td class="td-rank">${rankBadge}</td>
             <td class="td-name">${p.name}</td>
             <td class="td-amount td-cost">${formatCurrency(p.cost)}</td>
             <td class="td-amount td-donation">${formatCurrency(p.donation)}</td>
-            <td class="td-amount td-profit ${profitClass}">${formatCurrency(profit)}</td>
         `;
 
         tbody.appendChild(tr);
@@ -283,7 +279,7 @@ function initFAQ() {
 // ── SCROLL REVEAL ──
 function initScrollReveal() {
     const revealElements = document.querySelectorAll(
-        ".section-header, .podium-card, .rule-card, .about-content, .value-item, .faq-item, .table-wrapper, .summary-card"
+        ".section-header, .podium-card, .sartname-block, .about-content, .value-item, .faq-item, .table-wrapper, .summary-card"
     );
 
     revealElements.forEach(el => el.classList.add("reveal"));
@@ -307,9 +303,7 @@ document.addEventListener("DOMContentLoaded", () => {
     populateStats();
     initSummaryCards();
     populateBarChart();
-    populatePodium();
     populateTable();
     initNavbar();
-    initFAQ();
     initScrollReveal();
 });
