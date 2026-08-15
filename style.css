@@ -560,7 +560,7 @@ img {
 }
 
 .th-rank { width: 80px; text-align: center; }
-.th-amount { text-align: right; }
+.leaderboard-table th.th-amount { text-align: center; }
 
 .leaderboard-table td {
     padding: var(--space-md) var(--space-lg);
@@ -618,8 +618,10 @@ img {
     color: var(--clr-text-primary);
 }
 
-.td-cost { color: var(--clr-cost); font-weight: 600; }
-.td-donation { color: var(--clr-donation); font-weight: 600; }
+.td-cost { color: var(--clr-cost); font-weight: 600; text-align: center; }
+.td-donation { color: var(--clr-donation); font-weight: 600; text-align: center; }
+.leaderboard-table td.td-cost,
+.leaderboard-table td.td-donation { text-align: center; }
 .td-profit { font-weight: 700; }
 .td-profit.positive { color: var(--clr-donation); }
 .td-profit.negative { color: var(--clr-cost); }
@@ -629,9 +631,12 @@ img {
    ======================================== */
 .summary-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--space-lg);
     margin-bottom: var(--space-2xl);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .summary-card {
     background: var(--clr-surface);
@@ -746,15 +751,23 @@ img {
 }
 
 /* ========================================
-   RULES SECTION
+   ŞARTNAME SECTION
    ======================================== */
-.rules-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+.sartname-section {
+    background: var(--clr-surface-raised);
+}
+
+.sartname-content {
+    max-width: 840px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
     gap: var(--space-lg);
 }
 
-.rule-card {
+.sartname-block {
+    display: flex;
+    gap: var(--space-lg);
     background: var(--clr-surface);
     border: 1px solid var(--clr-border-light);
     border-radius: var(--radius-lg);
@@ -762,29 +775,218 @@ img {
     transition: var(--transition-slow);
 }
 
-.rule-card:hover {
-    border-color: var(--clr-accent-bg);
+.sartname-block:hover {
     box-shadow: var(--shadow-md);
     transform: translateY(-2px);
 }
 
-.rule-icon {
-    font-size: 2rem;
-    margin-bottom: var(--space-md);
+.sartname-number {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--clr-accent);
+    opacity: 0.25;
+    flex-shrink: 0;
+    width: 48px;
+    line-height: 1;
+    padding-top: 4px;
 }
 
-.rule-title {
+.sartname-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.sartname-heading {
     font-family: var(--font-display);
     font-size: 1.15rem;
     font-weight: 700;
     color: var(--clr-text-primary);
     margin-bottom: var(--space-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
 }
 
-.rule-desc {
-    font-size: 0.92rem;
+.sartname-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    background: var(--clr-accent-bg);
+    color: var(--clr-accent);
+    padding: 3px 10px;
+    border-radius: 999px;
+}
+
+.sartname-body > p {
+    font-size: 0.95rem;
+    color: var(--clr-text-secondary);
+    line-height: 1.8;
+}
+
+.sartname-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.sartname-list li {
+    position: relative;
+    padding-left: 20px;
+    font-size: 0.95rem;
     color: var(--clr-text-secondary);
     line-height: 1.7;
+}
+
+.sartname-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--clr-accent);
+    opacity: 0.5;
+}
+
+/* Warning list (disqualification) */
+.sartname-list-warning li::before {
+    background: var(--clr-cost);
+    opacity: 0.7;
+}
+
+/* Highlight block (rewards) */
+.sartname-highlight {
+    border-color: var(--clr-accent-bg);
+    background: linear-gradient(135deg, var(--clr-surface), hsl(152, 30%, 97%));
+}
+
+/* Warning block (disqualification) */
+.sartname-warning {
+    border-left: 3px solid var(--clr-cost);
+}
+
+/* Timeline */
+.sartname-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.timeline-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid var(--clr-border-light);
+}
+
+.timeline-item:last-child {
+    border-bottom: none;
+}
+
+.timeline-label {
+    font-size: 0.92rem;
+    color: var(--clr-text-secondary);
+}
+
+.timeline-value {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--clr-text-primary);
+}
+
+/* Reward cards */
+.reward-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+}
+
+.reward-card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    background: var(--clr-surface);
+    border: 1px solid var(--clr-border-light);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    transition: var(--transition-fast);
+}
+
+.reward-card:hover {
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-1px);
+}
+
+.reward-tier {
+    font-size: 1.6rem;
+    flex-shrink: 0;
+}
+
+.reward-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.reward-amount {
+    font-size: 0.82rem;
+    color: var(--clr-text-secondary);
+    line-height: 1.4;
+}
+
+.reward-prize {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--clr-accent);
+}
+
+.reward-tier-4 {
+    border-color: var(--clr-accent-bg);
+    background: linear-gradient(135deg, hsl(152, 30%, 97%), hsl(45, 50%, 97%));
+}
+
+.reward-tier-4 .reward-prize {
+    color: hsl(35, 65%, 45%);
+}
+
+.reward-note {
+    font-size: 0.9rem;
+    color: var(--clr-text-muted);
+    line-height: 1.6;
+    padding: var(--space-sm) var(--space-md);
+    background: var(--clr-surface-raised);
+    border-radius: var(--radius-sm);
+    text-align: center;
+}
+
+.reward-note strong {
+    color: var(--clr-accent);
+}
+
+/* Responsive şartname */
+@media (max-width: 640px) {
+    .sartname-block {
+        flex-direction: column;
+        gap: var(--space-sm);
+    }
+    .sartname-number {
+        font-size: 1.4rem;
+    }
+    .reward-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* ========================================
