@@ -4,16 +4,16 @@
 
 // ── REAL DATA ──
 const participants = [
-    { name: "Sevgi İlçin", cost: 1750, donation: 1530 },
-    { name: "Gülperi Yıldırım", cost: 8890, donation: 3125 },
-    { name: "Rabia Kılıç", cost: 24725, donation: 13550 },
-    { name: "Havva Karaköse", cost: 3335, donation: 1000 },
-    { name: "Ümmü Gülsüm Akdeniz", cost: 15635, donation: 6470 },
-    { name: "Zeynep Hazal Çeten", cost: 54000, donation: 112940 },
-    { name: "Nidanur Aksu", cost: 85285, donation: 100000 },
-    { name: "Zeynep Şen", cost: 40280, donation: 49450 },
-    { name: "Hatice Kübra Temizkan", cost: 13460, donation: 7365 },
-    { name: "Fatmanur Altun", cost: 30000, donation: 30465 }
+    { name: "Sevgi İlçin", cost: 1750, donation: 1530, prize: "Hediye" },
+    { name: "Gülperi Yıldırım", cost: 8890, donation: 3125, prize: "Hediye" },
+    { name: "Rabia Kılıç", cost: 24725, donation: 13550, prize: "Hediye" },
+    { name: "Havva Karaköse", cost: 3335, donation: 1000, prize: "Hediye" },
+    { name: "Ümmü Gülsüm Akdeniz", cost: 15635, donation: 6470, prize: "Hediye" },
+    { name: "Zeynep Hazal Çeten", cost: 54000, donation: 112940, prize: "Umre" },
+    { name: "Nidanur Aksu", cost: 85285, donation: 100000, prize: "Umre" },
+    { name: "Zeynep Şen", cost: 40280, donation: 49450, prize: "Umre" },
+    { name: "Hatice Kübra Temizkan", cost: 13460, donation: 7365, prize: "Hediye" },
+    { name: "Fatmanur Altun", cost: 30000, donation: 30465, prize: "Hediye Çeki" }
 ];
 
 // Sort by donation descending
@@ -203,11 +203,16 @@ function populateTable() {
             ? `<span class="rank-badge ${rankClass}">${rank}</span>`
             : rank;
 
+        let prizeClass = "prize-hediye";
+        if (p.prize === "Umre") prizeClass = "prize-umre";
+        else if (p.prize === "Hediye Çeki") prizeClass = "prize-ceki";
+
         tr.innerHTML = `
             <td class="td-rank">${rankBadge}</td>
             <td class="td-name">${p.name}</td>
             <td class="td-amount td-cost">${formatCurrency(p.cost)}</td>
             <td class="td-amount td-donation">${formatCurrency(p.donation)}</td>
+            <td class="td-prize"><span class="prize-badge ${prizeClass}">${p.prize}</span></td>
         `;
 
         tbody.appendChild(tr);
