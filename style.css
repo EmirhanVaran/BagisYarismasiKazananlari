@@ -626,6 +626,38 @@ img {
 .td-profit.positive { color: var(--clr-donation); }
 .td-profit.negative { color: var(--clr-cost); }
 
+/* Prize column */
+.th-prize { text-align: center; }
+.td-prize { text-align: center; }
+
+.prize-badge {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+}
+
+.prize-umre {
+    background: rgba(16, 185, 129, 0.12);
+    color: #059669;
+    border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.prize-ceki {
+    background: rgba(59, 130, 246, 0.12);
+    color: #2563eb;
+    border: 1px solid rgba(59, 130, 246, 0.25);
+}
+
+.prize-hediye {
+    background: rgba(245, 158, 11, 0.12);
+    color: #d97706;
+    border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
 /* ========================================
    SUMMARY SECTION
    ======================================== */
