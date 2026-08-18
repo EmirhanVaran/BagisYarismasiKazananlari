@@ -19,6 +19,15 @@ const participants = [
 // Sort by donation descending
 participants.sort((a, b) => b.donation - a.donation);
 
+// ── FORMAT NAME (soyadı baş harf + nokta) ──
+function formatName(fullName) {
+    const parts = fullName.trim().split(/\s+/);
+    if (parts.length <= 1) return fullName;
+    const lastName = parts[parts.length - 1];
+    const firstNames = parts.slice(0, -1).join(" ");
+    return firstNames + " " + lastName.charAt(0).toUpperCase() + ".";
+}
+
 // ── FORMAT CURRENCY ──
 function formatCurrency(amount) {
     return new Intl.NumberFormat("tr-TR").format(amount) + " ₺";
@@ -128,7 +137,7 @@ function populateBarChart() {
         row.className = "chart-row";
         
         row.innerHTML = `
-            <div class="chart-label">${p.name}</div>
+            <div class="chart-label">${formatName(p.name)}</div>
             <div class="chart-bars">
                 <div class="chart-bar-wrapper">
                     <div class="bar donation" style="width: 0" data-width="${donationPct}%"></div>
@@ -209,7 +218,7 @@ function populateTable() {
 
         tr.innerHTML = `
             <td class="td-rank">${rankBadge}</td>
-            <td class="td-name">${p.name}</td>
+            <td class="td-name">${formatName(p.name)}</td>
             <td class="td-amount td-cost">${formatCurrency(p.cost)}</td>
             <td class="td-amount td-donation">${formatCurrency(p.donation)}</td>
             <td class="td-prize"><span class="prize-badge ${prizeClass}">${p.prize}</span></td>
