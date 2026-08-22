@@ -6,7 +6,7 @@
 const participants = [
     { name: "Sevgi İlçin", cost: 1750, donation: 1530, prize: "Hediye" },
     { name: "Gülperi Yıldırım", cost: 8890, donation: 3125, prize: "Hediye" },
-    { name: "Rabia Kılıç", cost: 24725, donation: 13550, prize: "Hediye" },
+    { name: "Rabia Kılıç", cost: 29245, donation: 15530, prize: "Hediye" },
     { name: "Havva Karaköse", cost: 3335, donation: 1000, prize: "Hediye" },
     { name: "Ümmü Gülsüm Akdeniz", cost: 15635, donation: 6470, prize: "Hediye" },
     { name: "Zeynep Hazal Çeten", cost: 54000, donation: 112940, prize: "Umre" },
